@@ -1,3 +1,6 @@
+# enviromental
+.env
+
 # Compiled class file
 *.class
 /target
