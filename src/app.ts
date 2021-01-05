@@ -85,9 +85,9 @@ app.post('/callbacks/goodbye', async (req, res) => {
     res.status(200).send(response.toBxml())
 })
 
-app.post('/interrupt', async (req, res) => {
+app.delete('/calls/:callId', async (req, res) => {
 
-    const callId = req.body.callId
+    const callId = req.params.callId
 
     if (!activeCalls.has(callId)) {
         res.sendStatus(404)
