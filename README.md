@@ -18,7 +18,7 @@
 # Description
 This application loops indefinitely until an interruption is sent to end the call.  
 
-On an inbound call the callId is saved to an active calls set and set to loop indefinitely.  To view the list of active calls GET to the endpoint `/activeCalls` and the response will be a list of all active calls callIds.  To stop a call POST to the `/interrupts` the following body:
+On an inbound call the callId is saved to an active calls set and set to loop indefinitely.  To view the list of active calls GET to the endpoint `/activeCalls` and the response will be a list of all active calls callIds.  To stop a call POST to the `/interrupts` endpoint the following body:
 ```json
 {
   "callId": "<callId of call to end>"
@@ -42,6 +42,7 @@ BANDWIDTH_USERNAME                   // Your Bandwidth API Token
 BANDWIDTH_PASSWORD                   // Your Bandwidth API Secret
 BANDWIDTH_VOICE_APPLICATION_ID       // Your Voice Application Id created in the dashboard
 PORT                                 // The port number you wish to run the sample on
+BASE_URL                             // The public base url
 ```
 
 # Callback URLs

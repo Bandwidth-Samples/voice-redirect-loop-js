@@ -10,8 +10,9 @@ const applicationId = process.env.BANDWIDTH_VOICE_APPLICATION_ID
 const port = process.env.PORT
 const username = process.env.BANDWIDTH_USERNAME
 const password = process.env.BANDWIDTH_PASSWORD
+const basUrl = process.env.BASE_URL
 
-if (!accountId || !applicationId || !port ) {
+if (!accountId || !applicationId || !port || !basUrl ) {
     throw new Error(`Enviroment variables not set up properly
     accountId: ${accountId}
     applicationId: ${applicationId}
@@ -91,11 +92,16 @@ app.post('/interrupt', async (req, res) => {
     if (!activeCalls.has(callId)) {
         res.sendStatus(404)
     } else {
-        const response = await controller.modifyCall(accountId, callId, {
-            redirectUrl: '/callbacks/goodbye'
-        })
+        try {
+            const response = await controller.modifyCall(accountId, callId, {
+                redirectUrl: `${basUrl}/callbacks/goodbye`
+            })
+            res.status(response.statusCode).send()
+        } catch(e) {
+            res.status(500).send(e.message)
+        }
 
-        res.status(response.statusCode).send()
+        
     }
 })
 
