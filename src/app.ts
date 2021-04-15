@@ -5,12 +5,12 @@ import express from 'express'
 const app = express()
 app.use(express.json())
 
-const accountId = process.env.BANDWIDTH_ACCOUNT_ID
-const applicationId = process.env.BANDWIDTH_VOICE_APPLICATION_ID
-const port = process.env.PORT
-const username = process.env.BANDWIDTH_USERNAME
-const password = process.env.BANDWIDTH_PASSWORD
-const basUrl = process.env.BASE_URL
+const accountId = process.env.BW_ACCOUNT_ID
+const applicationId = process.env.BW_VOICE_APPLICATION_ID
+const port = process.env.LOCAL_PORT
+const username = process.env.BW_USERNAME
+const password = process.env.BW_PASSWORD
+const basUrl = process.env.BASE_CALLBACK_URL
 
 if (!accountId || !applicationId || !port || !basUrl ) {
     throw new Error(`Enviroment variables not set up properly
